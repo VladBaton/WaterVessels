@@ -27,6 +27,10 @@ public class Ship {
     @JoinColumn(name = "OWNERID", nullable = false)
     private ShipOwner shipOwner;
 
+    @ManyToOne
+    @JoinColumn(name = "PORTID", nullable = false)
+    private Port port;
+
     @ManyToMany(mappedBy = "favoriteShips")
     private List<ApplicationUser> shipLovers;
 
