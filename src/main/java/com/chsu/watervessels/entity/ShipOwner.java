@@ -15,9 +15,10 @@ import java.util.List;
 public class ShipOwner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long ownerId;
 
+    @Column(unique = true)
     private String ownerName;
 
     @OneToMany(mappedBy = "shipOwner", cascade = CascadeType.ALL, orphanRemoval = true)

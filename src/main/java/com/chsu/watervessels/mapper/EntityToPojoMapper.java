@@ -17,6 +17,6 @@ public interface EntityToPojoMapper {
     Ship shipToPojo(com.chsu.watervessels.entity.Ship ship);
 
     @Mapping(target = "countryName", expression = "java(port.getCountry().getCountryName())")
-    @Mapping(target = "ships", expression = "java(port.getShips().stream().map(ship -> shipToPojo(ship)).toList())")
+    @Mapping(target = "ships", expression = "java(java.util.Objects.isNull(port.getShips())? new java.util.ArrayList<>(): port.getShips().stream().map(this::shipToPojo).toList())")
     Port portToPojo(com.chsu.watervessels.entity.Port port);
 }

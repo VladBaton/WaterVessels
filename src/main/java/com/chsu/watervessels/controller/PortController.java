@@ -1,12 +1,15 @@
 package com.chsu.watervessels.controller;
 
 import com.chsu.watervessels.pojo.Port;
+import com.chsu.watervessels.pojo.request.CreatePortRequest;
+import com.chsu.watervessels.pojo.response.BaseResponse;
+import com.chsu.watervessels.pojo.response.CreatePortResponse;
+import com.chsu.watervessels.pojo.response.GetAllPortsResponse;
 import com.chsu.watervessels.service.PortService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +22,17 @@ public class PortController {
     PortService portService;
 
     @GetMapping
-    List<Port> getAllPorts() {
+    ResponseEntity<GetAllPortsResponse> getAllPorts() {
         return portService.getAllPorts();
     }
 
+    @PostMapping("/add")
+    ResponseEntity<CreatePortResponse> addPort(@RequestBody CreatePortRequest request) throws Exception {
+        return portService.addPort(request);
+    }
+
+    @DeleteMapping("/{portName}")
+    ResponseEntity<BaseResponse> deletePort(@PathVariable("portName") String portName) {
+        return portService.deletePort(portName);
+    }
 }

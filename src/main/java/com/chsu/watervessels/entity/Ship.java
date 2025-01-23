@@ -16,7 +16,7 @@ import java.util.List;
 public class Ship {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long shipId;
 
     @ManyToOne

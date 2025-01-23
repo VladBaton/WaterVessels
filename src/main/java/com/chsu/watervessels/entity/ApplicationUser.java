@@ -16,9 +16,10 @@ import java.util.List;
 public class ApplicationUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long userId;
 
+    @Column(unique = true)
     private String login;
 
     private String password;
