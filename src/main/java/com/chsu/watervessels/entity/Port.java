@@ -22,7 +22,7 @@ public class Port {
     @Column(unique = true)
     private String portName;
 
-    @OneToMany(mappedBy = "port", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "port", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     List<Ship> ships;
 
     @ManyToOne

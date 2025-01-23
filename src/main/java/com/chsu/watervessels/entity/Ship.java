@@ -19,19 +19,19 @@ public class Ship {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long shipId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "COUNTRYID", nullable = false)
     private Country country;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "OWNERID", nullable = false)
     private ShipOwner shipOwner;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PORTID", nullable = false)
     private Port port;
 
-    @ManyToMany(mappedBy = "favoriteShips")
+    @ManyToMany(mappedBy = "favoriteShips", fetch = FetchType.EAGER)
     private List<ApplicationUser> shipLovers;
 
     private String name;

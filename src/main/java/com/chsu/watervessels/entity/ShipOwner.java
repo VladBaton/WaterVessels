@@ -21,6 +21,6 @@ public class ShipOwner {
     @Column(unique = true)
     private String ownerName;
 
-    @OneToMany(mappedBy = "shipOwner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "shipOwner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     List<Ship> ships;
 }

@@ -24,7 +24,7 @@ public class ApplicationUser {
 
     private String password;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_ship",
             joinColumns = { @JoinColumn(name = "userId") },

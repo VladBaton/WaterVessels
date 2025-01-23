@@ -18,10 +18,10 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long countryId;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     List<Ship> ships;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     List<Port> ports;
 
     @Column(unique = true)
